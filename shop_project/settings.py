@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'userapp',
     'store_app',
     'crispy_forms',
+    'payment_app',
 ]
 
 MIDDLEWARE = [
@@ -134,3 +135,6 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 LOGIN_URL = 'login'
 LOGIN_REDIRECT_URL = 'home'
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
+
+STORE_ID = 'belal623611b3022c6'
+STORE_PASS = 'belal623611b3022c6@ssl'

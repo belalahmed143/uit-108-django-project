@@ -9,4 +9,9 @@ urlpatterns = [
     path('about', about, name='about'),
     path('category/product/<pk>',category_filtering, name='category-filter'),
     path('add-to-cart/<pk>',add_to_cart, name='add_to_cart'),
+    path('add-inc/<pk>',inc_cart, name='inc-cart'),
+    path('add-dec/<pk>',dec_cart, name='dec-cart'),
+    path('cart_remove/<pk>',cart_remove, name='cart_remove'),
+    path('cart-summary',cart_summary, name='cart-summary'),
+
 ]

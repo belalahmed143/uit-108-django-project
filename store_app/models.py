@@ -59,7 +59,8 @@ class Order(models.Model):
     cart_products = models.ManyToManyField(CartProduct)
     ordered = models.BooleanField(default=False)
     ordered_date = models.DateTimeField(default=timezone.now)
-
+    total_order_amount  = models.IntegerField(default=500)
+    
     # PaymentOption = (
     #     ('Cash On Delivery','Cash On Delivery'),
     #     ('SSL Commerz','SSL Commerz'),

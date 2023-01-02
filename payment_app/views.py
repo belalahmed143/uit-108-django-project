@@ -58,6 +58,7 @@ class CheckoutView(View):
                     order_qs = Order.objects.filter(user=request.user, ordered=False)
                     order = order_qs[0]
                     order.ordered = True
+                    order.total_order_amount = order.total()
                     order.payment_option = pay_method.payment_option
 
                     cart_products = CartProduct.objects.filter(user=request.user, ordered=False)
@@ -104,12 +105,13 @@ def sslc_status(request):
             tran_id = payment_data['tran_id']
 
             return HttpResponseRedirect(reverse('sslc-complete', kwargs={'val_id': val_id, 'tran_id': tran_id}))
-    return render(request, 'status.html')
+    return render(request, 'payment_app/status.html')
 
 def sslc_complete(request,val_id ,tran_id):
     order_qs = Order.objects.filter(user=request.user, ordered=False)
     order = order_qs[0]
     order.ordered = True
+    order.total_order_amount = order.total()
     order.payment_option = pay_method.payment_option
 
     cart_products = CartProduct.objects.filter(user=request.user, ordered=False)

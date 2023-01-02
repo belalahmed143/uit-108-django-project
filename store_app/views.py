@@ -146,3 +146,22 @@ def cart_summary(request):
        'order':order
     }
     return render(request, 'store/cart-summary.html', context)
+
+
+def order_summary(request):
+    order = Order.objects.filter(user=request.user, ordered=True)
+
+    context={
+       'order':order
+    }
+    return render(request, 'store/order-summary.html', context)
+
+def order_details(request,pk):
+    order = Order.objects.get(pk=pk)
+    cart_product = CartProduct.objects.filter(order=order)
+
+    context ={  
+        'order':order,
+        'cart_product':cart_product,
+    }
+    return render(request, 'store/order-details.html', context)
